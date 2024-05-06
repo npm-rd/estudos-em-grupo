@@ -9,6 +9,13 @@ export class AutenticacaoService {
     return !!this.credencial;
   }
 
+  resgatarCredencial() {
+    let credencial = sessionStorage.getItem('credencial');
+    if (credencial) {
+      this.credencial = new Credencial(JSON.parse(credencial));
+    }
+  }
+
   salvarCredencial(credencial: Credencial) {
     sessionStorage.setItem('credencial', JSON.stringify(credencial));
     this.credencial = credencial;

@@ -34,11 +34,25 @@ export class AutenticacaoRepositoryImp extends AutenticacaoRepository {
   }
 
   realizarCadastro(credencial: Credencial): Observable<Credencial> {
+    let params = { email: credencial.email };
     return this.http
-      .post(`mock/credenciais`, CredencialModel.toJson(credencial))
+      .get(`mock/credenciais`, {
+        params: new HttpParams({ fromObject: params }),
+        headers: { 'Content-Type': 'application/json' },
+      })
       .pipe(
-        map((response) => {
-          return CredencialModel.fromJson(response);
+        switchMap((response: any) => {
+          if (response.length > 0) {
+            return throwError(() => new Erro('Usuário já cadastrado!'));
+          }
+
+          return this.http
+            .post(`mock/credenciais`, CredencialModel.toJson(credencial))
+            .pipe(
+              map((response) => {
+                return CredencialModel.fromJson(response);
+              })
+            );
         })
       );
   }

@@ -12,6 +12,7 @@ export class CredencialModel {
 
   static toJson(credencial: Credencial) {
     return {
+      nome: credencial.nome,
       email: credencial.email,
       senha: credencial.senha,
     };

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { AutenticacaoService } from '../../../infra/services/autenticacao.service';
 import { CabecalhoComponent } from '../../components/cabecalho/cabecalho.component';
 
 @Component({
@@ -10,6 +11,10 @@ import { CabecalhoComponent } from '../../components/cabecalho/cabecalho.compone
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'blog';
+export class AppComponent implements OnInit {
+  constructor(private autenticacaoService: AutenticacaoService) {}
+
+  ngOnInit(): void {
+    this.autenticacaoService.resgatarCredencial();
+  }
 }

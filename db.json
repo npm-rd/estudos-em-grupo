@@ -5,6 +5,24 @@
       "nome": "Renan",
       "email": "renan",
       "senha": "12345678"
+    },
+    {
+      "id": "0aae",
+      "nome": "Lucas",
+      "email": "lucas",
+      "senha": "12345678"
+    },
+    {
+      "id": "73e1",
+      "nome": "Caio",
+      "email": "caio",
+      "senha": "123456789"
+    },
+    {
+      "id": "5ef5",
+      "nome": "Renan",
+      "email": "renan@email.com",
+      "senha": "112233Uf2"
     }
   ]
 }
