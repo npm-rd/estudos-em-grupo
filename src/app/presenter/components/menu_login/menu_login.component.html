@@ -6,6 +6,13 @@
     <input type="text" class="form-control" placeholder="Buscar..." />
   </div>
 
+  @if (!usuarioLogado) {
   <button class="btn" routerLink="login">Login</button>
   <button class="btn btn-primary" routerLink="cadastro">Cadastre-se</button>
+  } @else {
+  <span class="fw-bold text-primary">{{ credencial!.nome }}</span>
+  <button class="btn btn-light" (click)="sair()">
+    <i class="bi bi-box-arrow-right"></i>
+  </button>
+  }
 </section>

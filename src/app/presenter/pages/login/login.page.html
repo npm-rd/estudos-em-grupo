@@ -1,14 +1,43 @@
 <section class="login">
-  <form>
+  <form [formGroup]="formulario" (submit)="realizarLogin()">
+    @if (processoLogin.erro) {
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+      <div class="bi bi-exclamation-triangle-fill me-2"></div>
+      <div>{{processoLogin.erro.mensagem}}</div>
+      <button
+        type="button"
+        class="btn-close ms-2"
+        (click)="processoLogin.resetar()"
+      ></button>
+    </div>
+    }
+
     <div class="mb-3">
       <label class="form-label fw-bold">Email</label>
-      <input type="email" class="form-control" />
+      <input type="email" class="form-control" formControlName="email" />
+      <div class="invalid-feedback">Insira um e-mail</div>
     </div>
     <div class="mb-3">
       <label class="form-label fw-bold">Senha</label>
-      <input type="password" class="form-control" />
+      <input type="password" class="form-control" formControlName="senha" />
+      <div class="invalid-feedback">Insira uma senha</div>
     </div>
-    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="processoLogin.status == 1"
+    >
+      @if (processoLogin.status != 1) {
+      <span>Entrar</span>
+      } @else {
+      <span
+        class="spinner-border spinner-border-sm me-1"
+        aria-hidden="true"
+      ></span>
+      <span role="status">Autenticando...</span>
+      }
+    </button>
 
     <div class="form-text">
       <span class="me-1">Não possui conta?</span>

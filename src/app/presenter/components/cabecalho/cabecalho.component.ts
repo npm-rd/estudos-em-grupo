@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { MenuLoginComponent } from '../menu_login/menu_login.component';
 
@@ -10,8 +10,4 @@ import { MenuLoginComponent } from '../menu_login/menu_login.component';
   standalone: true,
   imports: [CommonModule, MenuComponent, MenuLoginComponent],
 })
-export class CabecalhoComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class CabecalhoComponent {}
